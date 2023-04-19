@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+ {{post.title}}
+{% endblock %}
+
+{% block content %}
+
+    <section id="post-content-page">
+      <article class="post-content-page">
+        <!-- title -->
+        <div class="post-title">
+          <h2 class="post-title">{{ post.title }}</h2>
+          <p class="post-user">@{{ post.user }}</p>
+          <p class="date-time">{{ post.created }}</p>
+          <br>
+          {% if user.is_authenticated %}
+            {% if user.id == post.user.id %}
+              <p><a href="{% url 'update' post.slug %}" style="color:#1878de">update</a></p>
+            {% endif %}
+          {% endif %}
+        </div>
+
+        <!-- blog content -->
+        <div class="blog-content">
+          <div class="post-content">
+            
+             {{ post.body | safe }}
+            
+          </div>
+        </div>
+      </article>
+    </section>
+
+
+    <!-- rencent posts with footer -->
+    <article id="recent-posts">
+      <div class="recent">
+
+        {% for post in posts %}
+
+          <a href="{% url 'details' post.slug %}">
+            <div class="story" data-aos="fade-in" data-aos-duration="1000">
+              <div class="img">
+
+                {% if post.image %}
+                  <img src="{{post.image.url}}" alt="" />
+                {% else %}
+                  <img src="{% static 'image/default.jpg' %}" alt="" />
+                {% endif %}
+              </div>
+              <div class="p-msg">
+                <div class="description">
+                  <div class="hastag">
+                    <span class="hastag">{{ post.category }}</span>
+                  </div>
+                  <div class="date">
+                    <span class="date">{{ post.created | truncatechars:12 }}</span>
+                  </div>
+                </div>
+                <div class="title">
+                  <span class="username"> @jace </span>
+                  <h3>{{ post.title }}</h3>
+                </div>
+              </div>
+            </div>
+          </a>
+
+        <!-- new -->
+        {% endfor %}
+      </div>
+    </article>
+
+    <br />
+    <br />
+    <br />
+    <div class="btn">
+      <button class="more">
+        <a href="javascript:window.history.back();">Back</a>
+      </button>
+    </div>
+    <br>
+    <br>
+    <br>
+    <!-- footer -->
+    <footer>
+      <div class="footer">
+        <div class="first">Welcome to StoneWorld!</div>
+        <br />
+        <div class="copyright">
+          <div class="cr">@copyright-StoneWorld</div>
+          <br />
+          <div class="year">2023</div>
+        </div>
+      </div>
+    </footer>
+    <!-- x footer x -->
+
+{% endblock %}

@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    About me | Ngoc Thanh
+{% endblock %}
+
+{% load static %}
+
+{% block content %}
+<div class="header">
+    <div id="logo">StoneWorld</div>
+    <ul class="nav">
+        <li><a href="{% url 'story' %}">My Story</a></li>
+        <li><a href="{% url 'about' %}">What about me?</a></li>
+        <li><a href="{% url 'contact' %}">Contact me</a></li>
+    </ul>
+    <!-- x header x -->
+</div>
+
+<div id="about">
+    <!-- <video autoplay loop muted plays-inline class="back-video">
+        <source src="./assets/pexels-cinema-professionals-3640567-3840x2160-30fps.mp4" type="video/mp4">
+    </video> -->
+
+     <!-- header -->
+    <section class="about-header">
+        <div class="header">
+            <h1 class="about">
+                About
+            </h1>
+            <p class="subtxt">
+                happy happy happy
+            </p>
+            <h3 class="about">
+                Jace said he really sorry to Ngoc Thanh
+            </br>
+                he needs to be more careful before he does anything
+            </h3>
+        </div>
+    </section>
+
+    <!-- <hr> -->
+    {% comment %} <h3 class="about">About</h3> {% endcomment %}
+    <hr>
+
+    <h2 class="topic">
+        Xin chào, dưới đây là hướng dẫn sử dụng Ngọc Thanh!
+    </h2>
+    <div class="text">
+        <h2>/You need to read all intructions carefully before using me/</h2>
+        {% comment %} <h3>I love trying new things</h3> {% endcomment %}
+    </div>
+    <!-- first person -->
+
+    <section class="stone">
+        <div class="about-content">
+            <div class="img">
+                <img src="{% static './assets/ng4.jpeg' %}" alt="">
+            </div>
+            <div class="side-content box1">
+                <!-- with background clor and padding -->
+                <p>
+                    1. Có vẻ tính cách của tớ chưa đuổi kịp được độ tuổi nên mong cậu sẽ bao dung hơn với tớ
+                    <br><br>
+                    /It seems that my personality hasn't caught up with my age, so I hope you will be more tolerant of me/
+                    <br><br>
+                    2. Tớ dễ rung động trước hành động hơn là lời nói
+                    <br><br>
+                    /I'm more moved by actions than words/
+                    </p>
+            </div>
+        </div>
+    </section>
+
+    <div class="background-image">
+        
+    </div>
+
+    <div class="about-banner">
+        <h3>
+            Please obey Ngoc Thanh's community's rules
+            </br>
+            Smile
+        </h3>
+    </div>
+    <!-- second person -->
+    <section class="stone">
+        <div class="about-content reverse">
+            <div class="side-content box2">
+                <p>
+                    3. Tớ buồn vui thất thường lắm nên chắc phải có căn mới biết trước được
+                    <br><br> 
+                    /I'm very moody and moody so I have to have a house to know in advance/
+                    <br><br> 
+                    4. Là một người không kiên nhẫn, tớ thích sự thẳng thắn
+                    <br><br> 
+                    /As someone who is impatient, I like frankness/
+                    
+            </div>
+            <div class="img">
+                <img src="{% static './assets/ng3.jpeg' %}" alt="">
+            </div>
+        </div>
+    </section>
+
+    <!-- third  -->
+    <section class="stone">
+        <div class="about-content">
+            <div class="img">
+                <img src="{% static './assets/ng2.jpeg' %}" alt="">
+            </div>
+            <div class="side-content box1">
+                <!-- with background clor and padding -->
+                <p>
+                    5. Tớ hay nổi nóng, tỏ ra cáu kỉnh nhưng tớ cũng dễ cười và đem lại cho người bên cạnh niềm vui
+                    <br><br>
+                    /I often get angry and irritable, but I also smile easily and bring joy to the people around me/
+                    <br><br>
+                    6. Trao đi trân thành và tớ không muốn nhận lại dối trá 
+                    <br><br>
+                    /Give respect and I don't want to receive lies/
+                    <br><br>
+                    7. Song Ngư tháng 3 nhiều khi rất nhạy cảm và mau nước mắt
+                    <br><br>
+                    /Pisces in March is sometimes very sensitive and quick to tears/
+                   
+            </div>
+        </div>
+    </section>
+</div>
+<br>
+    <!-- x body x -->
+    <br>
+    <br>
+    <!-- footer -->
+    <footer>
+        <div class="footer">
+            <div class="first">
+                Welcome to StoneWorld!
+            </div>
+            <br>
+            <div class="copyright">
+                <div class="cr">
+                    @copyright-StoneWorld
+                </div>
+                <br>
+                <div class="year">
+                    2023
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- x footer x -->
+{% endblock %}

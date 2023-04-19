@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+
+{% load static %} 
+
+{% block title %} 
+  Stone World 
+{% endblock %} 
+
+{% block content %}
+<div class="header">
+  <div id="logo">StoneWorld</div>
+  <ul class="nav">
+    <li><a href="{% url 'story' %}">My Story</a></li>
+    <li><a href="{% url 'about' %}">What about me?</a></li>
+    <li><a href="{% url 'contact' %}">Contact me</a></li>
+    {% if request.user.is_authenticated %}
+      <li><a href="{% url 'logout' %}">Logout</a></li>
+    {% else %}
+      <li><a href="{% url 'login' %}">Login</a></li>
+    {% endif %}
+  </ul>
+</div>
+<!-- x header x -->
+
+<!-- body -->
+<main id="main">
+  <section class="main-content">
+    <div class="main container">
+      <div class="caption">
+        <span> 宝石に興味のない人にダイヤモンドをあげても、猫に小判だ </span>
+      </div>
+      <div class="img">
+        <img
+          src="https://images.unsplash.com/photo-1563387852576-964bc31b73af?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1507&q=80"
+          alt=""
+        />
+      </div>
+    </div>
+  </section>
+  <hr class="divider" />
+  <!-- paragraph content -->
+  <section class="info">
+    <div class="container">
+      <div class="p-home">
+        <h4 class="title">為了相遇 ,</h4>
+        <br />
+        <h4 class="title">我們每天都在期待下一刻的到來 !</h4>
+        <div class="p-home msg">
+          <p>
+            在這個世界上，不單調的東西讓人很快厭倦，不讓人厭倦的大多是單調的東西。向來如此。我的人生可以有把玩單調的時間，但沒有忍受厭倦的餘地。而大部分人分不出二者的差別。
+          </p>
+          <br />
+          <span> —— 村上春樹 《海邊的卡夫卡》 </span>
+          <br />
+          <p>
+            於是我們領教了世界是何等凶頑，同時又得知世界也可以變得溫存和美好。
+          </p>
+          <br />
+          <span> —— 村上春樹 《海邊的卡夫卡》 </span>
+          <br />
+          <p>
+            “希望你記住我。”佐伯說，“只要有你記住我，被其他所有人忘掉都無所謂。”
+          </p>
+          <br />
+          <span> —— 村上春樹 《海邊的卡夫卡》 </span>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <hr class="divider" />
+  <!-- blog content is here -->
+  <section class="life-style">
+    <div class="container">
+      <div class="title" data-aos="fade-in" data-aos-duration="1000">
+        <a href="#content">
+          <h2>My Story</h2>
+          <p>今日札記</p>
+        </a>
+      </div>
+      <br />
+      <div id="content">
+        
+        {% for post in posts %}
+
+        <a href="{% url 'details' post.slug %}">
+          <div class="story" data-aos="fade-in" data-aos-duration="1000">
+            <div class="img">
+              {% if post.image %}
+              <img src="{{post.image.url}}" alt="" />
+              {% else %}
+              <img src="{% static 'image/default.jpg' %}" alt="" />
+              {% endif %}
+            </div>
+            <div class="p-msg">
+              <div class="description">
+                <div class="hastag">
+                  <span class="hastag">{{post.category}}</span>
+                </div>
+                <div class="date">
+                  <span class="date">
+                    {{ post.created | truncatechars:12 }}
+                  </span>
+                </div>
+              </div>
+              <div class="title">
+                <span class="username">
+                  @{{post.user}}
+                </span>
+                <h3>{{ post.title }}</h3>
+              </div>
+            </div>
+          </div>
+        </a>
+        {% endfor %}
+        <br />
+      </div>
+
+      <br />
+      <br />
+      <br />
+      <div class="btn">
+        <button class="more" onclick="location.href='story'">View More</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<br />
+<!-- x body x -->
+<br />
+<br />
+<!-- footer -->
+<footer>
+  <div class="footer">
+    <div class="first">Welcome to StoneWorld!</div>
+    <br />
+    <div class="copyright">
+      <div class="cr">@copyright-StoneWorld</div>
+      <br />
+      <div class="year">2023</div>
+    </div>
+  </div>
+</footer>
+<!-- x footer x -->
+{% endblock content %}

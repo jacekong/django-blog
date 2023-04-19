@@ -1,0 +1,120 @@
+{% load static %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+
+        {% endblock %}
+    </title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/posts.css' %}" />
+    
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- js -->
+    <script src="https://kit.fontawesome.com/5c5c0d787c.js" crossorigin="anonymous"></script> 
+</head>
+<body>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <!-- header -->
+    <header>
+        <nav class="menu">
+                <i class="fa-solid fa-bars" onclick="menuToggole(this);"></i>
+            <!-- <i class="fa-solid fa-xmark"></i> -->
+        </nav>
+
+        <!-- menu box -->
+        <div class="comtainer-menu" id="menu-box">
+            <div class="menu-content">
+                <div class="menu-icon">
+                    <div class="menu-icon handwrite">
+                        <p>
+                            心がすべてである。あなたは自分の考えたものになる。――ブッダ
+                        </p>
+                    </div>
+                    <div class="menu-icon logo">
+                        <p><a href="{% url 'index' %}">Stone</a></p>
+                    </div>
+                </div>
+                <div class="right-content">
+                    <div class="about">
+                        <h3 class="welcome">
+                            {% if user.is_authenticated %}
+                                {{user.username}}
+                                <br>
+                                Welcome back!
+                            {% endif %}
+                        </h3>  
+                        <br> 
+                        <br> 
+                        <div class="admin">
+                            {% if user.is_authenticated %}
+                                {% include 'admin.html' %}
+                            {% endif %}
+                        </div>
+
+                        <h3>
+                            The world of stone is much more powerful than you think, welcome!
+                        </h3>
+                        <br>
+                        <span>Do what you want to do,</span><br>
+                        <span>Say what you want to say,</span><br>
+                        <span>Play hard,</span><br>
+                        <span>Work hard!</span>
+                        <br><br><br>
+                        <div class="side-nav">
+                            <a href="{% url 'story' %}">My Story</a> /
+                            <a href="{% url 'about' %}">What about me?</a>/ 
+                            <a href="{% url 'contact' %}">Contact me</a>
+                            <br>
+                            <br>
+                            {% if request.user.is_authenticated %}
+                                <a href="{% url 'logout' %}">Logout</a>
+                            {% else %}
+                                 <a href="{% url 'login' %}">Login</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    {% block content %}
+
+    {% endblock content %}
+
+    <!-- go top -->
+    <button onclick="goTop()" id="topBtn" title="Go to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+    <!-- js  -->
+    <script src="{% static 'js/app.js' %}"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+
+    {{ redirect_to_login_immediately }}
+
+</body>
+
+</html>

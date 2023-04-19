@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    contact me...
+{% endblock %}
+
+{% block content %}
+
+<div class="header">
+    <div id="logo">StoneWorld</div>
+    <ul class="nav">
+      <li><a href="{% url 'story' %}">My Story</a></li>
+      <li><a href="{% url 'about' %}">What about me?</a></li>
+      <li><a href="{% url 'contact' %}">Contact me</a></li>
+    </ul>
+  </div>
+  <!-- x header x -->
+
+    <div class="contact">
+        <div class="container">
+            <h1>
+                You can't reach me out
+            </h1>
+            <h2>
+                Wacth out!
+            </h2>
+        </div>
+    </div>
+
+{% endblock %}

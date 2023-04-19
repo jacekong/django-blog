@@ -1,0 +1,127 @@
+{% extends 'base.html' %} 
+
+{% load static %}
+
+{% block title%} 
+  My Story | Blog Content
+{% endblock %} 
+
+{% block content %}
+
+<div id="blog-title">
+  <h2 class="title"><a href="{% url 'index' %}">Stone World</a></h2>
+</div>
+
+<main id="all-stories">
+  <!-- story header -->
+  <section class="story-header">
+    <div class="blog-side-title">
+      <h2 class="side-title">STORIES</h2>
+      <span class="story-title"> all blog posts </span>
+      <ul>
+        {% for cat in cats %}
+        
+          <li><a href="/story/?cats={{cat.category_id}}" style="color:grey">{{cat.title}}</a></li>
+        
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+
+  <!-- maximum posts is 7 in mobile mode -->
+  <!-- story content -->
+  <section class="blog-content">
+
+    <div id="blog-content">
+
+      {% for post in posts %}
+
+      <div class="blog-post" data-aos="fade-in" data-aos-duration="1000">
+
+        <a href="{% url 'details' post.slug %}">
+
+          <div class="img-sec">
+            {% if post.image %}
+              <img src="{{post.image.url}}" alt="" />
+            {% else %}
+              <img src="{% static 'image/default.jpg' %}" alt="" />
+            {% endif %}
+          </div>
+
+          <div class="blog-info">
+
+            <div class="created-user">
+              <div class="users">
+                <p>{{post.user}}</p>
+              </div>
+              ✍️
+              <div class="created-date">
+                <time>{{ post.created }}</time>
+              </div>
+            </div>
+
+            <div class="blog-post-title">
+              <h3>{{ post.title }}</h3>
+            </div>
+
+            <div class="blog-description">
+              <div class="truncate-content">
+                {% comment %} <p>{{ post.body|safe }}</p> {% endcomment %}
+              </div>
+              <br/>
+              <div class="blog-hastag">
+                <span class="hashtag">{{post.category}}</span>
+              </div>
+            </div>
+            
+          </div>
+
+        </a>
+      </div>
+
+      {% endfor %}
+    </div>
+  </section>
+
+  <br />
+  <!-- pagenition -->
+  <section class="pagination">
+    <div class="pagination">
+      <span class="step-links">
+          {% if posts.has_previous %}
+              <a href="?page=1">&laquo;first</a>
+              <a href="?page={{ posts.previous_page_number }}"><i class="fa-solid fa-arrow-left"></i></a>
+              <a href="#">Page {{ posts.number }} of {{ posts.paginator.num_pages }}</a>
+          {% endif %}
+  
+              {% comment %} <span class="current">
+                  Page {{ posts.number }} of {{ posts.paginator.num_pages }}
+              </span> {% endcomment %}
+  
+          {% if posts.has_next %}
+              <a href="?page={{ posts.next_page_number }}"><i class="fa-solid fa-arrow-right"></i></a>
+              <a href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>
+          {% endif %}
+      </span>
+  </div>
+  </section>
+</main>
+
+<br />
+<!-- x body x -->
+<br />
+<br />
+<!-- footer -->
+<footer>
+  <div class="footer">
+    <div class="first">Welcome to StoneWorld!</div>
+    <br />
+    <div class="copyright">
+      <div class="cr">@copyright-StoneWorld</div>
+      <br />
+      <div class="year">2023</div>
+    </div>
+  </div>
+</footer>
+<!-- x footer x -->
+{% endblock %}
