@@ -91,10 +91,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'ngblog',
-        'USER': 'postgres',
-        'PASSWORD': 'jace',
+        'USER': 'jaceadmin97',
+        'PASSWORD': 'ngocthanh0312',
         'HOST': 'localhost',
-        'PORT': '5433',
+        'PORT': '',
     }
 }
 
