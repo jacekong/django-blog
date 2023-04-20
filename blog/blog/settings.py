@@ -140,9 +140,7 @@ STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
 MEDIA_URL = 'image/'
-
-import os
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+MEDIA_ROOT = BASE_DIR / 'static'
 
 # ckeditor
 # CKEDITOR_BASEPATH = 'static/ckeditor/'
