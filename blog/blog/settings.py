@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-=0+8w6*ur)pl78r@(slqj$gx6w_y!_s-o7emr5-n++7-)tz)s0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['www.ngocthanh.bio']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -90,10 +90,10 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'ngblog',
-        'USER': 'jaceadmin97',
-        'PASSWORD': 'ngocthanh0312',
-        'HOST': 'localhost',
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
         'PORT': '',
     }
 }
